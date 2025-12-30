@@ -7,21 +7,30 @@ This tool automates the entire workflow — from data import to generating publi
 
 🧩 Key Features
 
+
 📈 Annual Block Maxima (GEV): Fits Generalized Extreme Value distribution to yearly maxima.
+
 
 🎚 Peaks Over Threshold (POT): Detects and models exceedances above a chosen threshold.
 
+
 🔁 Rolling POT analysis: Computes time-varying shape parameter ξ(t) using a moving window.
+
 
 🎲 Bootstrap uncertainty estimation: Confidence intervals via repeated resampling.
 
+
 📉 Non-stationary σ(t) modeling: Detects trends in scale parameter over time.
+
 
 📊 Return levels estimation: Calculates expected magnitudes of 50-year and 100-year extremes.
 
+
 🧠 Trend and change-point tests: Mann–Kendall (trend) and Pettitt (abrupt change) tests.
 
+
 📑 Automated PDF reporting: Generates a complete, publication-ready report with all results and figures.
+
 
 
 📊 Input Data Format
@@ -31,28 +40,39 @@ The input dataset should be a CSV file containing daily observations with date c
 Example:
 
 year,month,day,value
+
 2000,1,1,12.4
+
 2000,1,2,13.2
+
 2000,1,3,10.8
+
 ...
+
 2020,12,31,14.5
+
 
 
 Each numeric column (like “value”, “precipitation”, or “temperature”) will be analyzed separately.
 
+
 ✅ You can include multiple numeric columns — the script automatically detects and processes each one.
+
 
 ⚙️ How to Use
 1️⃣ Install Dependencies
 
 Make sure you have Python 3.8+ installed, then install required packages:
 
+
 pip install -r requirements.txt
 
 2️⃣ Prepare Your Data
 
 Place your input CSV file (e.g., btmax.csv) inside the sample_data/ folder.
+
 Ensure it has year, month, and day columns and one or more numeric variables.
+
 
 3️⃣ Run the Analysis
 
@@ -129,12 +149,19 @@ Infrastructure resilience studies
 Insurance and catastrophe modeling
 
 📦 Requirements
+
 Library	Purpose
+
 numpy	Numerical operations
+
 pandas	Data handling and time series management
+
 matplotlib	Plotting and visualization
+
 scipy	Statistical modeling (GEV, GPD)
+
 reportlab	PDF report generation
+
 
 Install all dependencies via:
 
@@ -145,27 +172,41 @@ pip install -r requirements.txt
 This tool implements key components of Extreme Value Theory:
 
 Method	Description
+
 GEV (Generalized Extreme Value)	Models block maxima (e.g., yearly max precipitation).
+
 POT (Peaks Over Threshold)	Uses all data exceeding a defined threshold.
+
 Bootstrap	Resamples data to estimate uncertainty in ξ (shape parameter).
+
 Rolling window	Tracks temporal change in extreme behavior.
+
 Mann–Kendall	Non-parametric test for monotonic trends.
+
 Pettitt test	Detects change-points in time series.
+
 📈 Return Levels
 
 Return levels (e.g., 50-year, 100-year) represent the magnitude of an event expected once every T years, on average.
 
+
 This helps planners and engineers assess design safety margins for rare, extreme events.
+
 
 🧩 Customization
 
 In the script (evt_analysis.py), you can modify:
 
 FILE_PATH = "sample_data/btmax.csv"
+
 OUTPUT_DIR = "output"
+
 POT_QUANTILES = [0.9, 0.95, 0.99, 0.995]
+
 ROLLING_WINDOW = 5
+
 RETURN_YEARS = [50, 100]
+
 
 
 These parameters control:
